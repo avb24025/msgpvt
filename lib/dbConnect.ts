@@ -16,15 +16,15 @@ async function dbConnect():Promise<void>{
         connection.isConnected=mongoose.connections[0].readyState;
         if(connection.isConnected===1){
             console.log("Use previous connection");
-            return;
+            return; 
         }   
 
         await mongoose.disconnect();
         console.log("Disconnected from previous connection");
     }
-    const db=await mongoose.connect(process.env.MONGO_URI!);
+    await mongoose.connect(process.env.MONGO_URI!);
     console.log("New connection established");
-    connection.isConnected=db.connections[0].readyState;
+    connection.isConnected = mongoose.connections[0].readyState;
 }   
 export default dbConnect;
 

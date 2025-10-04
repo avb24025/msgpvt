@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
+import dbConnect from "@/lib/dbConnect";
 import { sendOTP } from "@/lib/mailer";
+import { SignJWT, jwtVerify } from "jose";
+
+
 
 // (for demo, using in-memory storage; use DB/Redis in real apps)
 const otpStore = new Map<string, { otp: string; expires: number }>();
 
 export async function POST(req: Request) {
   try {
+    await dbConnect();
     const { email } = await req.json();
 
     // Generate a random 6-digit OTP
