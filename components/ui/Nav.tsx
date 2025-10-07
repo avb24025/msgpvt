@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import  Login  from "./Login";
+import Signup from "./Signup";
 
 export function NavigationMenuDemo() {
   return (
@@ -22,7 +23,16 @@ export function NavigationMenuDemo() {
       </button>
       <Login />
       <span style={{ marginRight: "4px" }} /> {/* Spacer between buttons */}
-      <button className="btn gap-2 ml-2">Signup</button>
+      <button
+        className="btn gap-4 mr-1"
+        onClick={() => {
+          const modal = document.getElementById("my_modal_1") as HTMLDialogElement | null;
+          if (modal) modal.showModal();
+        }}
+      >
+        Signup
+      </button>
+      <Signup />
     </ul>
   </div>
 
