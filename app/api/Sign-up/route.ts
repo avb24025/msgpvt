@@ -2,9 +2,7 @@ import dbConnect from "@/lib/dbConnect";
 import User from "@/model/User";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import {sendOTP} from '@/lib/mailer';
-import { Verify } from "crypto";
-import { SignJWT, jwtVerify } from "jose";
+import { sendOTP } from '@/lib/mailer';
 
 await dbConnect();
 
@@ -47,7 +45,7 @@ export async function POST(request: Request) {
         await sendOTP(email, verifyCode);
 
         return NextResponse.json({message:"User created successfully"}, {status:201});
-    } catch(error) {
+    } catch {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }

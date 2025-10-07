@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import { sendOTP } from "@/lib/mailer";
-import { SignJWT, jwtVerify } from "jose";
 
 
 
@@ -39,3 +38,4 @@ export function verifyOtp(email: string, otp: string): boolean {
   if (Date.now() > record.expires) return false;
   return true;
 }
+

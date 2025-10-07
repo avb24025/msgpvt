@@ -1,9 +1,11 @@
-import Image from "next/image";
-
+import Hero from "../components/ui/Hero";
+import Footer from "../components/ui/Footer";
 export default function Home() {
   return (
    <>
-   <div>hii</div>
+    <Hero />
+    <Footer />
    </>
   );
 }
+

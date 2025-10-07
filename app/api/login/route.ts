@@ -2,8 +2,7 @@ import dbConnect from "@/lib/dbConnect";
 import User from "@/model/User";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { SignJWT, jwtVerify } from "jose";
-
+import { SignJWT } from "jose";
 
 
 export async function POST(request: Request) {
@@ -36,7 +35,7 @@ export async function POST(request: Request) {
 
 
         return NextResponse.json({ message: "Login successful", token }, { status: 200 });
-    } catch (error) {
+    } catch {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }

@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import { verifyOtp } from "../send-otp/route"; // import helper
 import dbConnect from "@/lib/dbConnect";
 import User from "@/model/User";
-import { SignJWT, jwtVerify } from "jose";
+import { SignJWT } from "jose";
 
 await dbConnect();
 
